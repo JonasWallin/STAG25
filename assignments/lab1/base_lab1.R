@@ -27,7 +27,7 @@ arith.2 <- function(){
 arith.3 <- function(i){
   
 }
-#' takes a vector and computes the mean value of the vector rounded at two decimals
+#' takes a vector and computes the mean value of the vector
 #' you are not allowed to use the built in function mean here
 #' @param vector.in - (n x 1) input vector
 #' @param mean.out -  (1 x 1) the mean of the vector
