@@ -5,7 +5,11 @@ tasks:
   task1:
     url: 
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_1.R
+  task2:
+    url: 
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_2.R
+  task3:
+    url:
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_3.R
 mandatory:
   url:
