@@ -4,8 +4,8 @@
 
 # write three functions 
 
-
-
+#my_name <- 
+#my_mail <- 
 #'basic arithmetic operations
 #' 
 
@@ -48,8 +48,8 @@ Var <- function( vector.in){
 #'
 #' You should create a function that takes a vector of tw integer
 #' and return TRUE if the output is two sixes FALSE otherwise
-#' @param dices - (2 x 1)
-#' @return dices.two.sixes - (1 x 1) boolean is dices two sixes
+#' @param dices - (2 x 1) a vector of two dices
+#' @return dices.two.sixes - (boolean)  is dices two sixes
 is.sixes <- function(dices){
   
 }

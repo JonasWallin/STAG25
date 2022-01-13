@@ -1,11 +1,12 @@
 name :  Lab1 
 description : This is the first lab about basic objects
+packages: [markmyassignment]
 tasks:
   task:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/markmyassignment/master/inst/extdata/task_1.R
-      - https://raw.githubusercontent.com/MansMeg/markmyassignment/master/inst/extdata/task_2.R
-      - https://raw.githubusercontent.com/MansMeg/markmyassignment/master/inst/extdata/task_3.R
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_1.R
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_2.R
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_3.R
 mandatory:
   url:
-    - https://raw.githubusercontent.com/MansMeg/markmyassignment/master/inst/extdata/example_mandatory.R
+    - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/inst/base_tests.R
