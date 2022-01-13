@@ -2,7 +2,7 @@ name :  Lab1
 description : This is the first lab about basic objects
 packages: [markmyassignment]
 tasks:
-  task:
+  task1:
     url: 
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_1.R
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab1/task_2.R
