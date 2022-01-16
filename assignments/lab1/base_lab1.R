@@ -14,7 +14,7 @@
 #' @return 4.84log_10(51!)
 #' here log_10 is the logarithm with base 10
 #' ! stands for factorial
-artih.1 <- function(){
+arith.1 <- function(){
   
 }
 
@@ -27,8 +27,8 @@ arith.2 <- function(){
 
 
 # task 3
-#' @param i
-#' @return 1/1+1/2+1/3+1/4...+1/i
+#' @param i - (integer)
+#' @return  1/1+1/2+1/3+1/4...+1/i
 #'
 arith.3 <- function(i){
   
@@ -38,7 +38,7 @@ arith.3 <- function(i){
 #' takes a vector and computes the mean value of the vector
 #' you are not allowed to use the built in function mean here
 #' @param vector.in - (n x 1) input vector
-#' @param mean.out -  (1 x 1) the mean of the vector
+#' @return mean.out -  (1 x 1) the mean of the vector
 Mean <- function( vector.in ){
   
 }
