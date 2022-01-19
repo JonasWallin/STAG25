@@ -1,0 +1,28 @@
+name :  Lab1 
+description : This is the second lab about objects, storage, and loading
+packages: [markmyassignment]
+tasks:
+  task1:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_1.R
+  task2:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_2.R
+  task3:
+    url:
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_3.R
+  task4:
+    url:
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_4.R
+  task5:
+    url:
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_5.R
+  task6:
+    url:
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_6.R
+  task7:
+    url:
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/task_7.R
+mandatory:
+  url:
+    - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab2/base_tests.R
