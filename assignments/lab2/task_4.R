@@ -3,6 +3,7 @@ context("task 4")
 test_that("Marking of task 4", {
   
   deck <- create.deck()
+  deck <- deck[order(deck$faces,deck$suits),]
   expect_true(exists("is.three.of.a.kind"), info = "is.three.of.a.kind() does not exist.")
   expect_error(is.three.of.a.kind(deck[1:4,]), info = "is.three.of.a.kind should throw error if five cards not inserted")
   expect_error(is.three.of.a.kind(deck[1:6,]), info = "is.three.of.a.kind should throw error if five cards not inserted")
