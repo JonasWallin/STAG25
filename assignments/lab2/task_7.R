@@ -15,4 +15,5 @@ test_that("Marking of task 7", {
   expect_equal(is.factor(data$cond),
                TRUE,
                info = "cond should be factor")
+  expect_equal(data$aged365[38],21.31644,info ="decimal test")
 })
