@@ -1,6 +1,6 @@
 
-#my.name <- 
-#my.mail <- 
+#my_name <- 
+#my_mail <- 
 
 
 #task 1

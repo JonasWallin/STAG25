@@ -2,7 +2,6 @@ name :  Lab3
 description : This is the thrid lab about loops
 packages: [markmyassignment]
 tasks:
-tasks:
   task1:
     url: 
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab3/task_1.R
@@ -23,4 +22,4 @@ tasks:
       - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab3/task_6.R
 mandatory:
   url:
-    - grade/base_tests.R
+    - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab3/base_tests.R
