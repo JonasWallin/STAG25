@@ -4,8 +4,8 @@
 #' d - is PDF
 #' p - is CDF
 #' You are not allowed use the package triangle
-my_name <- "jona"
-my_mail <- "was"
+my_name <- ""
+my_mail <- ""
 
 #' Task 1
 #' 
