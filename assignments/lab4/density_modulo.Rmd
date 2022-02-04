@@ -1,0 +1,182 @@
+---
+title: "&nbsp;"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Distributional functions in R
+
+In R [probability distributions](https://en.wikipedia.org/wiki/Probability_distribution) functions have a common naming convention. And since distributions is one of the main tools in statistics it is important to know this framework.
+
+If for instance we are interested in the property of a standard normal random variable, $X$, i.e. a random variable with [normal distrbution](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and variance one, then in R one should look for functions conncted to `norm`. If we want to compute the probability that $X$ is less or equal to two ($\mathbb{P}(X < 2$) then one uses
+the function `pnorm`; If one want to find the $x$ where the probability that $X$ is less then a half then one uses `qnorm`; If one wants to know the density of for a value one uses `dnorm`; Finnaly we if want to generate a random number that follows the normal distribution we use `rnorm`.
+
+
+In R any distributional object should have the same structure, that is for a generic distribution *dens* we have
+
+* `d` density      
+* `p` probability   
+* `q` quantile   
+* `r` random number
+
+We will now go through the functions one by one and also give a short reminder of the definition of each of them.
+
+## Probability function
+
+Here we want to compute the probability of $\mathbb{P}(X \leq x)$ where $X$ has a known distribution. This function is also known as the [cumulative distribution function (CDF)](https://en.wikipedia.org/wiki/Cumulative_distribution_function), often denoted $F(x)=\mathbb{P}(X \leq x)$.
+The general function of `p` has the following arguments
+```{r prob, eval=FALSE}
+p(x, parameter1, paramater2, ..., lower.tail=TRUE, log.p=FALSE)
+```
+That is `x` is the value we want to compute that the probability is less or equal; `parameter1, parameter2` are the parameters for the specific distribution; `lower.tail=TRUE` means we compute $\mathbb{P}(X\leq x)$ if `lower.tail=FALSE` one instead computes  $\mathbb{P}(X> x)$. If `log.p=TRUE` the function returns $\log\left( \mathbb{P}(X\leq x) \right)$ this can be useful if dealing with very small proabilites as there can be round off errors.
+
+#### Example 
+Suppose that $X$ follows a Poisson distribution with intensity $\lambda=4$ (a parameter), which equivalently can be written 
+$$
+X \sim Poiss(\lambda=4).
+$$
+Then to compute the probability that $\mathbb{P}(X \leq 4)$ in R we use
+```{r poisson}
+Ple4 <- ppois(4, lambda = 4)
+print(round(Ple4,2))
+```
+To get the probability of  $\mathbb{P}(X > 4)$ we can use that $$\mathbb{P}(X > 4)= 1- \mathbb{P}(X \leq 4) \approx 1- 0.63 = 0.37 $$ or in R 
+```{r poisson 2}
+Pg4 <- ppois(4, lambda = 4, lower.tail=F)
+print(round(Pg4,2))
+```
+To compute the probability of  $\mathbb{P}(2 < X  <10) = \mathbb{P}(X < 10) - \mathbb{P}(X \leq 2 )$ which for a the Poisson distribution gives (since the Poisson distribution is a discrete distribution).
+```{r poisson 3}
+Pl10 <- ppois(9, lambda = 4)
+Pl2   <- ppois(2, lambda = 4)
+print(round(Pl10-Pl2,2))
+```
+Make sure you understand why one used  `x=9` and `x=2`.
+
+If we instead $X$ follows a Normal distribution with mean two and variance 3, often denoted $X \sim \mathcal{N}\left(2,3 \right)$ then
+```{r normal}
+Pl10 <- pnorm(10,  mean = 2, sd = sqrt(3))
+Pl2   <- pnorm(2, mean = 2, sd = sqrt(3))
+print(round(Pl10-Pl2,2))
+```
+Make sure you understand why one used  `x=10` and `x=2`.
+For more detail see [Wikit on probability distribution](https://en.wikipedia.org/wiki/Probability_distribution).
+
+
+## Density function
+
+Here we want to compute [the density function](https://en.wikipedia.org/wiki/Probability_density_function) where $X$ has a known distribution. Recall that density function for a random variable is the non-negative function $f$ such that
+$$
+\mathbb{P}\left(X \leq x \right) = \int^x f(s) ds.
+$$
+For a discrete random variable one gets
+$$
+\mathbb{P}\left(X \leq x \right) = \sum_{i:x_i \leq x} f(x_i)  =  \sum_{i:x_i \leq x} \mathbb{P}(X=x_i). 
+$$
+The general function of `d` has the following arguments
+```{r dens, eval=FALSE}
+d(x, parameter1, paramater2, ...,log=FALSE)
+```
+where `log=TRUE` returns the natural logarithm of the density.
+
+Note that any non-negative function, $f$, taking values such that
+$$
+\int_D f(s) ds< \infty
+$$
+can be transformed to a density on $D$ by 
+$$
+\tilde{f}(x) = \frac{f(x)}{\int_D f(s) ds}.
+$$
+What is the value of $\int_D \tilde{f}(s)  ds$?
+For more details on the density function see [wiki](https://en.wikipedia.org/wiki/Probability_density_function)
+
+#### Example 
+
+If $X$ is a Poisson random variable with $\lambda=4$ then to compute $\mathbb{P}\left(X=4 \right)$ one uses:
+```{r poisson dens}
+Ple4 <- dpois(4, lambda = 4)
+print(round(Ple4,2))
+```
+To link `dpois` and `ppois` note that:
+```{r p vs d}
+Ple4 <- ppois(4, lambda = 4, lower.tail=T)
+Ple4.v2 <- sum(dpois(0:4, lambda=4))
+print(round(Ple4-Ple4.v2,2))
+```
+To compute $\mathbb{P}\left( 2<X < 10\right)$ for $X \sim \mathcal{N}\left(2,3 \right)$ using `dnorm` we use the `integrate` function:
+```{r dnorm prob}
+Pg2l10 <- integrate(function(x){dnorm(x,2,sqrt(3))},2,10)
+print(round(Pg2l10$value,2))
+```
+## Quantile function
+
+The function `q` is the [quantile function](https://en.wikipedia.org/wiki/Quantile_function), this function takes a probability $p$ and finds the value $x$ such that
+$$
+\mathbb{P}(X \leq x) = p.
+$$
+This can be written in the more complicated form
+$$
+Q(p)  = inf \{x: p \leq F(x) \}= F^{-1}(x).
+$$
+Recall that $F(x) = \mathbb{P}\left(X \leq x \right)$ , and it follows that if $F$ is continuous then $F(F^{-1}(p))=p$.
+The general function of `q` has the following arguments
+```{r quan, eval=FALSE}
+q(p, parameter1, paramater2, ...,lower.tail=TRUE,log.p=FALSE).
+```
+Note that if $X$ is a discrete random variable there might not exits and $x$ such that $\mathbb{P}(X \leq x) = p$, in this case one takes the smallest $x$ s.t $\mathbb{P} \left( X \leq x \right) \geq p$.
+
+#### Example 
+
+If $X$ is a Poisson random variable with $\lambda=4$ then to find the smallest such that$x$ $\mathbb{P}\left(X \leq x \right)=0.2$ one uses:
+```{r poisson q}
+Ql02 <- qpois(0.2, lambda = 4)
+print(round(Ql02,2))
+```
+To find $\mathbb{P}\left(X > x\right)=0.7$ for $X \sim \mathcal{N}\left(2,3 \right)$ using `qnorm` we use:
+```{r norm q}
+Qg07 <- qnorm(0.7, mean = 4, sd = sqrt(3), lower.tail = FALSE)
+print(round(Qg07,2))
+```
+For lower tail one can use the following relation
+```{r norm q 2}
+Qg07.v2<- qnorm(1-0.7, mean = 4, sd = sqrt(3), lower.tail = TRUE) 
+print(round(Qg07-Qg07.v2,2)) 
+```
+## random number generation
+To simulate random number from the a distribution one uses the function `r`
+```{r random, eval=FALSE}
+r(n, parameter1, paramater2,...).
+```
+here `n` is the number of samples one wants to generate.
+
+#### Example 
+
+To sample ten random variables from a Poisson distribution with $\lambda=4$ one uses
+```{r poisson r}
+X <- rpois(n=10, lambda = 4)
+print(X)
+```
+If one can has the quantile function, $q$ for a random variable and can generate samples from a uniform distribution then one can generate samples from the distrbution using the [inverse method](https://en.wikipedia.org/wiki/Inverse_transform_sampling):
+```{r poisson r 2}
+U <- runif(10) # samples from U ~ U[0,1]
+X <- qpois(U, lambda=4)
+print(X)
+```
+
+To see the connection between histogram of a random variable and it density one can use
+```{r hist }
+X <- rnorm(n=1000) # samples from U ~ U[0,1]
+hist(X, prob=TRUE)
+curve(dnorm, col="darkblue", lwd=2, add=TRUE, yaxt="n")
+```
+
+
+To verify  the [inverse method](https://en.wikipedia.org/wiki/Inverse_transform_sampling):
+```{r hist 2}
+X <- qnorm(runif(n=1000), mean=4,sd=2) # samples from U ~ U[0,1]
+hist(X, prob=TRUE)
+curve(dnorm(x, mean=4, sd=2), col="darkblue", lwd=2, add=TRUE, yaxt="n")
+```
