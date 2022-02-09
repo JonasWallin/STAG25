@@ -1,3 +1,4 @@
+library(triangle)
 context("task 4")
 
 test_that("Marking of task 4", {
