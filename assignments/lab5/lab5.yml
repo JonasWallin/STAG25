@@ -1,0 +1,13 @@
+name :  Lab4
+description : This is the fourth lab about densites
+packages: [markmyassignment]
+tasks:
+  task1:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab5/task_1.R
+  task2:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab5/task_2.R
+mandatory:
+  url:
+    - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab5/base_tests.R
