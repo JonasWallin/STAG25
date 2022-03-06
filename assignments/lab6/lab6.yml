@@ -1,0 +1,25 @@
+name :  Lab6
+description : This is the sixth lab about lm
+packages: [markmyassignment]
+tasks:
+  task1:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_1.R
+  task2:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_2.R
+  task3:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_3.R
+  task4:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_4.R
+  task5:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_5.R
+  task6:
+    url: 
+      - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/task_6.R
+mandatory:
+  url:
+    - https://raw.githubusercontent.com/JonasWallin/STAG25/main/assignments/lab6/base_tests.R
